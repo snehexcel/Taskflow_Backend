@@ -1,0 +1,206 @@
+================================================================================
+                    TASKFLOW - SETUP INSTRUCTIONS
+================================================================================
+
+Welcome to TaskFlow! Follow these steps to get your application running.
+
+STEP 1: READ THE DOCUMENTATION
+================================================================================
+Start with: INDEX.md
+This file guides you through all available documentation.
+
+Quick reference:
+- QUICKSTART.md ........... 5-minute setup guide (START HERE!)
+- README.md .............. Full documentation
+- DEPLOYMENT.md .......... Deployment guide
+- API.md ................. API reference
+- DEVELOPMENT.md ......... Development guide
+
+STEP 2: INSTALL DEPENDENCIES
+================================================================================
+Run this command:
+
+    pnpm install
+
+Or if you use npm or yarn:
+
+    npm install
+    yarn install
+
+STEP 3: CREATE ENVIRONMENT FILE
+================================================================================
+Copy the example file:
+
+    cp .env.example .env.local
+
+Then edit .env.local with your Supabase credentials:
+
+    NEXT_PUBLIC_SUPABASE_URL=your_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+    SUPABASE_SERVICE_ROLE_KEY=your_key
+    SUPABASE_JWT_SECRET=your_secret
+
+Don't have Supabase credentials? Go to: https://supabase.com
+
+STEP 4: RUN DATABASE MIGRATIONS
+================================================================================
+Option A - Automatic migration:
+
+    node scripts/run-migration.js
+
+Option B - Manual migration:
+1. Go to Supabase SQL Editor
+2. Copy content from: scripts/01-setup-database.sql
+3. Paste into Supabase SQL Editor
+4. Click "Run"
+
+STEP 5: START DEVELOPMENT SERVER
+================================================================================
+Run this command:
+
+    pnpm dev
+
+Then visit: http://localhost:3000
+
+SUCCESS INDICATORS
+================================================================================
+✓ Dev server running without errors
+✓ Home page loads at http://localhost:3000
+✓ Can register a new account
+✓ Can login to dashboard
+✓ Can create and manage tasks
+
+NEXT STEPS
+================================================================================
+1. Test the application
+2. Read DEVELOPMENT.md to understand the codebase
+3. Follow DEPLOYMENT.md to deploy to production
+4. Extend with your own features
+
+NEED HELP?
+================================================================================
+- Quick start: See QUICKSTART.md
+- Setup issues: See README.md
+- API details: See API.md
+- Development: See DEVELOPMENT.md
+- Deployment: See DEPLOYMENT.md
+- Everything: See INDEX.md
+
+COMMON ISSUES
+================================================================================
+
+Issue: "Environment variables not found"
+→ Restart dev server after creating .env.local
+
+Issue: "Cannot connect to database"
+→ Check Supabase project is running
+→ Verify credentials in .env.local
+
+Issue: "Port 3000 already in use"
+→ Use: pnpm dev -- -p 3001
+
+Issue: "Dependencies not installing"
+→ Clear cache and reinstall:
+    rm -rf node_modules pnpm-lock.yaml
+    pnpm install
+
+COMMANDS REFERENCE
+================================================================================
+Start development server:
+    pnpm dev
+
+Build for production:
+    pnpm build
+
+Start production server:
+    pnpm start
+
+Run linter:
+    pnpm lint
+
+IMPORTANT FILES
+================================================================================
+Configuration:
+- .env.example .............. Environment template
+- next.config.mjs ........... Next.js configuration
+- tailwind.config.ts ........ Tailwind CSS configuration
+- tsconfig.json ............. TypeScript configuration
+
+Database:
+- scripts/01-setup-database.sql .. Database schema
+- scripts/run-migration.js ....... Migration runner
+
+Core Application:
+- app/layout.tsx ............. Root layout
+- app/page.tsx ............... Home page
+- middleware.ts .............. Route protection
+- lib/auth.ts ................ Auth utilities
+- lib/supabase-client.ts ..... Database client
+
+TECHNOLOGY STACK
+================================================================================
+Frontend:  Next.js 16, React 19, TypeScript, Tailwind CSS, shadcn/ui
+Backend:   Next.js API Routes, Node.js, JWT, bcryptjs
+Database:  PostgreSQL, Supabase
+Hosting:   Vercel (for deployment)
+
+QUICK DEPLOYMENT
+================================================================================
+1. Push to GitHub:
+    git add .
+    git commit -m "Initial commit"
+    git push origin main
+
+2. Go to vercel.com and import repository
+
+3. Add environment variables in Vercel settings
+
+4. Click Deploy
+
+→ See DEPLOYMENT.md for detailed instructions
+
+PROJECT STRUCTURE
+================================================================================
+app/                    Next.js App Router
+├── api/v1/            REST API endpoints
+├── auth/              Login/Register pages
+├── dashboard/         Protected dashboard
+├── about/             About page
+└── page.tsx           Home page
+
+components/ui/         UI components
+hooks/                 Custom React hooks
+lib/                   Utility functions
+scripts/               Database setup
+middleware.ts          Route protection
+
+FEATURES INCLUDED
+================================================================================
+✓ User authentication (register, login, logout)
+✓ Task management (create, read, update, delete)
+✓ Task filtering and status tracking
+✓ User-specific data isolation
+✓ Role-based access control
+✓ Beautiful, responsive UI
+✓ Complete REST API
+✓ Security best practices
+✓ Full documentation
+✓ Ready for deployment
+
+SUPPORT
+================================================================================
+Documentation: Check README.md, API.md, DEVELOPMENT.md
+Issues: See troubleshooting section in QUICKSTART.md
+Questions: Refer to INDEX.md for documentation index
+
+================================================================================
+                         YOU'RE ALL SET!
+================================================================================
+
+Next: Read QUICKSTART.md to get started in 5 minutes!
+
+Questions? See INDEX.md for all documentation.
+
+Happy coding! 🚀
+
+================================================================================
